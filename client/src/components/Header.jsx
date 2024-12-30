@@ -23,7 +23,7 @@ function Header() {
         <div className='flex gap-2 md:order-2'>
             <Button className='w-12 h-10 hidden sm:inline' color='gray' pill><FaMoon/></Button>
             <Link to="/sign-in">
-            <Button className='w-auto h-10' gradientDuoTone="purpleToBlue">Sign In</Button>
+            <Button className='w-auto h-10' gradientDuoTone="purpleToBlue" outline>Sign In</Button>
             </Link>
             <Navbar.Toggle/>
         </div>
