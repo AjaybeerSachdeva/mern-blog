@@ -1,7 +1,16 @@
 import express from 'express';
-const app=express();
-const port=3000;
+import mongoose from 'mongoose';
+import dotenv from "dotenv";
+dotenv.config();
+mongoose.connect(process.env.MONGO).then
+(()=>{console.log("Database is connected successfully")})
+.catch(error=>{
+    console.log(error);
+})
 
-app.listen(port,()=>{
-    console.log(`Backend working on port ${port}`);
+const app=express();
+
+app.listen(3000,()=>{
+    console.log('Backend working on port 3000');
 }); 
+
