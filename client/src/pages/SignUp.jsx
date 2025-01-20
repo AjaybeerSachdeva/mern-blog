@@ -80,10 +80,6 @@ function SignUp() {
             <Label htmlFor='password' value='Your password'/>
             <TextInput id='password' type='password' sizing='sm' placeholder='Password' onChange={handleChange} required/>
             </div>
-            <Button gradientDuoTone='redToYellow'>
-              Continue with Google
-              <FaGoogle className='ml-3 text-lg'/>
-              </Button>
             <Button type='submit' gradientDuoTone='purpleToBlue' disabled={loading}>
               {loading? (<>
                 <Spinner aria-label="Spinner button example"/>
@@ -91,6 +87,10 @@ function SignUp() {
                 </>
               )
               :"Sign Up!"}
+              </Button>
+              <Button gradientDuoTone='redToYellow'>
+              Continue with Google
+              <FaGoogle className='ml-3 text-lg'/>
               </Button>
           </form>
           <div className='flex items-center gap-2 mt-5 text-sm'>
