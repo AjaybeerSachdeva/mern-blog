@@ -1,8 +1,8 @@
 import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useState } from 'react';
-import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { HiInformationCircle } from "react-icons/hi";
+import OAuth from '../components/OAuth';
 
 
 function SignUp() {
@@ -88,10 +88,7 @@ function SignUp() {
               )
               :"Sign Up!"}
               </Button>
-              <Button gradientDuoTone='redToYellow'>
-              Continue with Google
-              <FaGoogle className='ml-3 text-lg'/>
-              </Button>
+              <OAuth/>
           </form>
           <div className='flex items-center gap-2 mt-5 text-sm'>
           <span className=''>Have an account?</span>

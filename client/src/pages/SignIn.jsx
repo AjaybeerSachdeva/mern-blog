@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { HiInformationCircle } from "react-icons/hi";
 import { useSelector, useDispatch } from 'react-redux';
 import { signInStart,signInSuccess,signInFailure } from '../redux/user/UserSlice';
+import OAuth from '../components/OAuth';
 
 export default function SignIn() {
   const navigate=useNavigate();
@@ -82,10 +83,7 @@ export default function SignIn() {
               )
               :"Sign In!"}
               </Button>
-              <Button gradientDuoTone='redToYellow'>
-              Continue with Google
-              <FaGoogle className='ml-3 text-lg'/>
-              </Button>
+              <OAuth/>
           </form>
           <div className='flex items-center gap-2 mt-5 text-sm'>
           <span className=''>Don't have an account?</span>
