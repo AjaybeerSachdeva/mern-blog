@@ -1,10 +1,13 @@
-import { Button, Navbar, TextInput } from 'flowbite-react';
+import { Avatar, Button, Dropdown, Navbar, TextInput  } from 'flowbite-react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
+import {useSelector} from 'react-redux';
+import { HiLogout, HiViewGrid } from "react-icons/hi";
 
 function Header() {
+  const {currentUser}=useSelector((state)=>state.user);
   const location=useLocation().pathname;
   return (
     <Navbar className='border-b-2'>
@@ -22,9 +25,36 @@ function Header() {
         <Button className='w-12 h-10 lg:hidden' color='gray' pill><AiOutlineSearch/></Button>
         <div className='flex gap-2 md:order-2'>
             <Button className='w-12 h-10 hidden sm:inline' color='gray' pill><FaMoon/></Button>
-            <Link to="/sign-in">
+            {currentUser?
+            (
+              <Dropdown
+              arrowIcon={false}
+              label={
+                <Avatar
+                  img={currentUser.profilePicture} // Replace with the correct path
+                  alt="User"
+                  rounded
+                  size="md"
+                />
+              }
+              inline
+            >
+      <Dropdown.Header>
+        <span className="block text-sm">@{currentUser.username}</span>
+        <span className="block truncate text-sm font-medium">{currentUser.email}</span>
+      </Dropdown.Header>
+      <Link to={'/dashboard?tab=profile'}>
+      <Dropdown.Item icon={HiViewGrid}>Profile</Dropdown.Item>
+      </Link>
+      <Dropdown.Divider />
+      <Dropdown.Item icon={HiLogout}>Sign out</Dropdown.Item>
+    </Dropdown>
+            )
+            :
+            (<Link to="/sign-in">
             <Button className='w-auto h-10' gradientDuoTone="purpleToBlue" outline>Sign In</Button>
-            </Link>
+            </Link>)
+            }
             <Navbar.Toggle/>
         </div>
         <Navbar.Collapse>
